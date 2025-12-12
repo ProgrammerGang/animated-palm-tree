@@ -1,58 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>VoxAI Page</title>
-  <style>
-    body, html {
-      margin: 0; padding: 0; width: 100%; height: 100%;
-    }
-    #container {
-      width: 100%; height: 100%;
-    }
-    #fallback {
-      display: none;
-      width: 100%; height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #111;
-      color: white;
-      font-size: 2rem;
-      font-family: sans-serif;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cropped Fullscreen Iframe</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* prevent scrolling the body */
+  }
+
+  /* wrapper for cropping */
+  .iframe-wrapper {
+    width: 100vw;
+    height: 100vh; /* full viewport */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .iframe-wrapper iframe {
+    position: absolute;
+    top: -5vh;  /* move the iframe up by 5% of viewport height */
+    left: 0;
+    width: 100vw;
+    height: 105vh; /* full viewport + extra to compensate for the shift */
+    border: none;
+  }
+</style>
 </head>
 <body>
-
-<div id="container">
-  <iframe id="voxFrame" src="https://animated-spork-v6gqp6qvwxx6c7gg-5000.app.github.dev/" style="width:100%;height:100%;border:none;"></iframe>
+<div class="iframe-wrapper">
+  <iframe src="https://fu01978-voxai.hf.space/"></iframe>
 </div>
-
-<div id="fallback">VoxAI está apagado actualmente.</div>
-
-<script>
-const iframe = document.getElementById('voxFrame');
-const container = document.getElementById('container');
-const fallback = document.getElementById('fallback');
-
-// Some sites block onerror events on iframe, so we use a timeout as backup
-let timeout = setTimeout(() => {
-  container.style.display = 'none';
-  fallback.style.display = 'flex';
-}, 5000); // 5 seconds timeout
-
-iframe.onerror = () => {
-  clearTimeout(timeout);
-  container.style.display = 'none';
-  fallback.style.display = 'flex';
-};
-
-// Optional: also hide iframe if it fails to load (CORS blocked)
-iframe.onload = () => {
-  clearTimeout(timeout);
-};
-</script>
-
 </body>
 </html>
