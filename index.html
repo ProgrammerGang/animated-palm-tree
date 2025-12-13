@@ -7,12 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0, auto;
-      padding: 0, auto;
+      margin: 0;
+      padding: 0;
       font-family: 'Open Sans', Arial, sans-serif;
-      background-color: #0f0f11;
+      background: linear-gradient(135deg, #0f0f11, #1a1a1f);
       color: white;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     h1, {
       margin: 0;
@@ -28,13 +31,30 @@
       color: #555;
       font-weight: normal;
       margin-top: 5px;
+      max-width: 300px;
+    }
+    .model-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background: #00FFFF;
+      color: #0f0f11;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .model-btn:hover {
+      background: #00cccc;
+    }
+    h3 {
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
   <h1>VoxAI</h1>
   <h3>Selecciona un modelo:</h3>
-  <a href="models/voxai-intermedio/">VoxAI-Intermedio</a>
+  <a href="models/voxai-intermedio/" class="model-btn">VoxAI-Intermedio</a>
   <h5>Equilibrio entre velocidad y precisión.</h5>
 </body>
 </html>
